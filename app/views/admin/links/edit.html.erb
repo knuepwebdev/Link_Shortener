@@ -1,3 +1,4 @@
+<div>Usage Count: <%= @link.usage_count %></div>
 <%= form_for(@link, url: admin_link_path(@link)) do |f| %>
   <div><b>Is Active</b></div>
   <div><%= f.select :is_active, [true, false], selected: @link.is_active %></div>
