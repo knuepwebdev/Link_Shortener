@@ -1,4 +1,6 @@
 class LinksController < ApplicationController
+  before_action :find_link, only: [:show, :decode]
+
   def new
     @link = Link.new
   end
@@ -9,12 +11,10 @@ class LinksController < ApplicationController
   end
 
   def show
-    @link = Link.find(params[:id])
     return render @link
   end
 
   def decode
-    @link = Link.find(params[:id])
     return render partial: "layouts/not_found", status: :not_found if !@link.is_active
     @link.update_attributes(usage_count: @link.usage_count += 1)
     return redirect_to @link.long_url
