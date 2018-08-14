@@ -10,6 +10,7 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
+    return render partial: "layouts/not_found", status: :not_found if !@link.is_active
     @link.update_attributes(usage_count: @link.usage_count += 1)
     return render @link
   end
