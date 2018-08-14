@@ -1,2 +1,9 @@
-<div>Short URL: <%= @link.short_url %></div>
+<div>
+  Short URL: 
+  <%=
+    link_to_if(!@link.is_active, @link.short_url, controller: "links", action: "show") do
+      link_to @link.short_url, decode_link_path(@link), target: "_blank", rel: "nofollow" if @link.is_active
+    end
+  %>
+</div>
 <div>Admin URL: <%= link_to @link.admin_url, edit_admin_link_path(@link) %></div>

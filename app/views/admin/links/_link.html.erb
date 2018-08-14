@@ -2,7 +2,7 @@
   Short URL: 
   <%=
     link_to_if(!@link.is_active, @link.short_url, controller: "links", action: "show") do
-      link_to @link.short_url, @link.long_url, target: "_blank", rel: "nofollow" if @link.is_active
+      link_to @link.short_url, decode_link_path(@link), target: "_blank", rel: "nofollow" if @link.is_active
     end
   %>
 </div>
