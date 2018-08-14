@@ -11,6 +11,8 @@ describe LinksController, type: :controller do
   end
 
   describe "create" do
+    before(:each) { Link.destroy_all }
+
     it "creates a new link" do
       expect(Link.count).to eql(0)
       post :create, params: { link: { long_url: long_url } }
@@ -24,7 +26,6 @@ describe LinksController, type: :controller do
     end
 
     it "generates an admin link" do
-      Link.destroy_all
       expect(Link.count).to eql(0)
       post :create, params: { link: { long_url: long_url } }
       expect(Link.first.admin_url).not_to be_nil
