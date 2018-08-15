@@ -3,11 +3,11 @@
 <% end %>
 
 <%= form_for(@link) do |f| %>
-  <p>
-    <b>Enter a URL</b><br>
-    <%= f.text_field :long_url %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="form-group">
+    <label for="long_url">Enter URL</label>
+    <%= f.text_field :long_url, { id: "url_input" } %>
+  </div>
+  <div>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
 <% end %>
