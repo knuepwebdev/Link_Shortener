@@ -1,3 +1,7 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value.first["message"], class: "flash #{key}" %>
+<% end %>
+
 <%= form_for(@link) do |f| %>
   <p>
     <b>Enter a URL</b><br>

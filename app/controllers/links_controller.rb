@@ -6,8 +6,9 @@ class LinksController < ApplicationController
   end
 
   def create
-    link = Link.create(link_params)
-    return redirect_to link
+    link = Link.new(link_params)
+    return redirect_to link if link.save
+    return redirect_to new_link_url, flash: { error: link.errors.messages[:long_url] }
   end
 
   def show

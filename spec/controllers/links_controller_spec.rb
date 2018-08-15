@@ -13,6 +13,11 @@ describe LinksController, type: :controller do
   describe "#create" do
     before(:each) { Link.destroy_all }
 
+    it "does not create a short URL if the submitted long URL is invalid" do
+      post :create, params: { link: { long_url: "invalid_url" } }
+      expect(Link.count).to eql(0)
+    end
+
     it "creates a new link" do
       expect(Link.count).to eql(0)
       post :create, params: { link: { long_url: long_url } }
@@ -29,7 +34,7 @@ describe LinksController, type: :controller do
       expect(Link.count).to eql(0)
       post :create, params: { link: { long_url: long_url } }
       expect(Link.first.admin_url).not_to be_nil
-    end    
+    end
   end
 
   describe "#decode" do
