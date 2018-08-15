@@ -14,6 +14,11 @@ describe Admin::LinksController, type: :controller do
   describe "#update" do
     before(:each) { Link.destroy_all }
 
+    it "returns a 404 if the ID is invalid" do
+      get :show, params: { id: "invalid" }
+      expect(response.status).to eql(404)
+    end
+
     it "Admin user can de-activate a short URL" do
       expect(link.is_active).to eql(true)
       put :update, params: { id: link.id, link: { id: link.id, is_active: false } }

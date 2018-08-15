@@ -2,6 +2,9 @@ class Admin::LinksController < ApplicationController
   # Only allow Admin users to access admin endpoints
   # before_action :authenticate_admin
   before_action :find_link, only: [:edit, :update, :show]
+  rescue_from ActiveRecord::RecordNotFound do |ex|
+    render partial: "layouts/not_found", status: :not_found
+  end  
 
   def edit
     return render "edit"

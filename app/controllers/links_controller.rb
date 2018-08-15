@@ -1,5 +1,8 @@
 class LinksController < ApplicationController
   before_action :find_link, only: [:show, :decode]
+  rescue_from ActiveRecord::RecordNotFound do |ex|
+    render partial: "layouts/not_found", status: :not_found
+  end
 
   def new
     @link = Link.new

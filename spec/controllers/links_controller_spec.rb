@@ -56,5 +56,17 @@ describe LinksController, type: :controller do
       get :decode, params: { id: link.id }
       expect(response.status).to eql(404)
     end
+
+    it "returns a 404 if the ID is invalid" do
+      get :decode, params: { id: "invalid" }
+      expect(response.status).to eql(404)
+    end    
+  end
+
+  describe "#show" do
+    it "returns a 404 if the ID is invalid" do
+      get :show, params: { id: "invalid" }
+      expect(response.status).to eql(404)
+    end
   end
 end
