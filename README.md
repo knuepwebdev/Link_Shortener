@@ -10,7 +10,8 @@
 #### Automated Specs
 
 Here are the test cases which are covered by automated Rspec tests:
-```Admin::LinksController
+```
+Admin::LinksController
   #edit
     renders the Edit Link form
   #update
