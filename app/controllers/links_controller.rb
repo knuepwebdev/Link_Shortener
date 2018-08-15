@@ -15,7 +15,7 @@ class LinksController < ApplicationController
   end
 
   def show
-    return render @link
+    return render "show"
   end
 
   def decode

@@ -11,13 +11,13 @@ class Admin::LinksController < ApplicationController
   end
 
   def update
-    return render @link if @link.update_attributes(link_params)
+    return render "show" if @link.update_attributes(link_params)
   end
 
   def show
     return render partial: "layouts/not_found", status: :not_found if !@link.is_active
     @link.update_attributes(usage_count: @link.usage_count += 1)
-    return render @link
+    return render "show"
   end  
 
   private

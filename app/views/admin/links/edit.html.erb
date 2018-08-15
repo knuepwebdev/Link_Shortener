@@ -1,22 +1,8 @@
 <%= form_for(@link, url: admin_link_path(@link)) do |f| %>
-  <div id="edit_link">
-    <div class="col-sm">
-      <div>Usage Count: <%= @link.usage_count %></div>
-      <div id="is_active"><b>Is Active</b></div>
-      <div><%= f.select :is_active, [true, false], selected: @link.is_active %></div>
+    <div>Usage Count: <%= @link.usage_count %></div>
+    <div class="form-group">
+      <label for="is_active" id="is_active_label"><b>Is Active</b>
+      <%= f.select :is_active, [true, false], { selected: @link.is_active }, { class: "form-control", id: "is_active" } %>
       <div><%= f.submit "Update", class: "btn btn-primary" %></div>
     </div>    
-  </div>
 <% end %>
-
-
-<!-- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div> -->

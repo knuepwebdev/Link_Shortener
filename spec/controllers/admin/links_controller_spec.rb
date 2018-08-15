@@ -27,7 +27,7 @@ describe Admin::LinksController, type: :controller do
 
     it "redirects to the Show URLs page" do
       put :update, params: { id: link.id, link: { id: link.id, is_active: false } }
-      expect(response).to render_template("_link")
+      expect(response).to render_template("show")
     end
   end
 end
